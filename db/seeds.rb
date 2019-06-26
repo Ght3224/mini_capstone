@@ -8,4 +8,9 @@
 
 
 
-product1=Product.new(name:Faker::Dessert.topping, price: 1, image_url: 'http://espn.go.com', description: "Sponsored by ESPN").save
+
+100.times do 
+
+Product.new(name:Faker::Dessert.topping, price: rand(22), image_url: 'http://espn.go.com', description: "Sponsored by ESPN").save
+
+end 

@@ -13,8 +13,8 @@ class Api::ProductsController < ApplicationController
 
   def store 
     @product = Product.last
-    render "food_to_get_at_store"
+    render "food_to_get_at_store.json.jb"
   end 
-  
+
 
 end

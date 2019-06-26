@@ -1,1 +1,3 @@
 {foods: @product.map{|food| p food}}
+
+
