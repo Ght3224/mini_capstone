@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+
+
+100.times do 
+
+Product.new(name:Faker::Dessert.topping, price: rand(22), image_url: 'http://espn.go.com', description: "Sponsored by ESPN").save
+
+end 
