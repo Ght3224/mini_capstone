@@ -21,5 +21,7 @@ Rails.application.routes.draw do
 
   post '/products' => 'products#create'
 
+  
+
   end
 end

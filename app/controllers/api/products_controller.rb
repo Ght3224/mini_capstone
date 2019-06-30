@@ -29,13 +29,16 @@ class Api::ProductsController < ApplicationController
   #   render "food_to_get_at_store.json.jb"
   # end 
 
-  # def create 
+  def create 
 
-  #   @product = Product.new(
-  #     name: params[])
+    @product = Product.new(
+      name: params[:input_name], 
+      price: params[:input_price],
+      description: params[:input_description])
+    @product.save
 
-  #   render 'create.json.jb'
+      render 'show.json.jb'
 
-  # end
+  end
 
 end 
