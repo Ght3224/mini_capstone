@@ -41,4 +41,32 @@ class Api::ProductsController < ApplicationController
 
   end
 
+
+
+  def update 
+
+    @product = Product.find_by(id: params[:id])
+    @product.name = params[:input_name]
+    @product.price = params[:input_price]
+    @product.description = params[:description]
+    @product.save 
+
+    render 'show.json.jb'
+  end 
+
+
+
+
+  def destroy 
+
+
+    @product = Product.find_by(id: params[:id])
+
+    @product.destroy 
+
+    render 'destroy.json.jb'
+  end 
+
+
+
 end 
