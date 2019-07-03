@@ -6,7 +6,16 @@
     name: product.name, 
     price: product.price, 
     description: product.description,
-    image_url: ""
+    image_url: "",
+
+    Formatted: 
+    {
+
+        is_discounted?: product.is_discounted?, 
+        tax_of_product: product.tax.to_f,
+        total_with_tax: product.total.to_f
+
+    }
 
   }
 end 
