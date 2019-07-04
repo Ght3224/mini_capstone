@@ -1,19 +1,17 @@
+# frozen_string_literal: true
+
+# top-level documentation!
 class Api::ProductsController < ApplicationController
-
-
-
-  def index 
-
+  def index
     # url = HTTP.get(https://code.org/schools.json)
     # response = JSON.parse(url)
 
     @product = Product.all
 
     render 'index.json.jb'
-  end 
+  end
 
-
-  def show 
+  def show
     product =  params[:id]
     @product = Product.find_by(id: product)
     render 'show.json.jb'
@@ -35,9 +33,12 @@ class Api::ProductsController < ApplicationController
       name: params[:input_name], 
       price: params[:input_price],
       description: params[:input_description])
-    @product.save
-
+    # @product.save
+    if @product.save
       render 'show.json.jb'
+    else 
+      render 'errors.json.jb', status: :unprocessable_entity
+    end 
 
   end
 
@@ -46,18 +47,17 @@ class Api::ProductsController < ApplicationController
   def update 
 
     @product = Product.find_by(id: params[:id])
-    @product.name = params[:input_name]
-    @product.price = params[:input_price]
-    @product.description = params[:description]
-    @product.save 
+    if @product.update(
+    name: params[:input_name], price: params[:input_price],
+    description: params[:input_description])
+    # @product.save
+      render 'show.json.jb'
+    else
+      render 'errors.json.jb', status: :unprocessable_entity
+    end
+  end
 
-    render 'show.json.jb'
-  end 
-
-
-
-
-  def destroy 
+  def destroy
 
 
     @product = Product.find_by(id: params[:id])

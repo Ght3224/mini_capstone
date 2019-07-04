@@ -1,16 +1,13 @@
-{
-  id: product.id, 
+# frozen_string_literal: true
+
+{ id: product.id,
   name: product.name,
   price: product.price,
   description: product.description,
-  image_url: "",
-    Formatted: 
-    {
-
-        is_discounted?: product.discounted?,
-        tax_of_product: product.tax.to_f,
-        total_with_tax: number_to_currency(product.total.to_f)
-
-    }
-
-}
+  image_url: '',
+  Formatted: {
+    is_discounted?: product.discounted?,
+    tax_of_product: product.tax.to_f,
+    total_with_tax: number_to_currency(product.total.to_f)
+  },
+  stock: product.stock }
