@@ -6,7 +6,9 @@ class Api::ProductsController < ApplicationController
     # url = HTTP.get(https://code.org/schools.json)
     # response = JSON.parse(url)
 
-    @product = Product.all
+    @product = Product.where("price < ?", "#{params[:price]}") #and Product.where()
+
+    @product = @product.order(:id => :asc)
 
     render 'index.json.jb'
   end
@@ -28,20 +30,17 @@ class Api::ProductsController < ApplicationController
   # end 
 
   def create 
-
     @product = Product.new(
-      name: params[:input_name], 
+      name: params[:input_name],
       price: params[:input_price],
-      description: params[:input_description])
+      description: params[:input_description] )
     # @product.save
     if @product.save
       render 'show.json.jb'
-    else 
+    else
       render 'errors.json.jb', status: :unprocessable_entity
     end 
-
   end
-
 
 
   def update 
@@ -49,8 +48,8 @@ class Api::ProductsController < ApplicationController
     @product = Product.find_by(id: params[:id])
     if @product.update(
     name: params[:input_name], price: params[:input_price],
-    description: params[:input_description])
-    # @product.save
+    description: params[:input_description] )
+     @product.save
       render 'show.json.jb'
     else
       render 'errors.json.jb', status: :unprocessable_entity
