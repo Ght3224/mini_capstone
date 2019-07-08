@@ -4,11 +4,32 @@
 class Api::ProductsController < ApplicationController
   def index
     # url = HTTP.get(https://code.org/schools.json)
-    # response = JSON.parse(url)
+    # response = JSON.parse(url
+    # if params[:search]
+    #   @products = Product.where('name LIKE ?', '%{params[:search]}%')
+    # else 
+    #  @products = Product.all
+     # end 
+    #where('price < ?', '#{params[:search]}') #and Product.where()
 
-    @product = Product.where("price < ?", "#{params[:price]}") #and Product.where()
 
-    @product = @product.order(:id => :asc)
+
+    if params[:search]
+      @products = Product.where("name LIKE ?", "%#{params[:search]}%")
+
+    else
+      @products = Product.all
+    end
+
+
+    if params[:discount]
+      @products = @products.where('price < ?', 2)
+    end 
+
+    if params[:sort]
+      @products = @products.order(:price => :asc)
+    end 
+
 
     render 'index.json.jb'
   end
