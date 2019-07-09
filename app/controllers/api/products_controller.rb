@@ -30,6 +30,8 @@ class Api::ProductsController < ApplicationController
       @products = @products.order(:price => :asc)
     end 
 
+    @products = @products.order(params[:sort]) #=> params[:sort_order]
+
 
     render 'index.json.jb'
   end
