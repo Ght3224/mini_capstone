@@ -1,17 +1,18 @@
-@products.map do |product|
+# frozen_string_literal: true
 
+@products.map do |product|
   # {
 
-  #   id: product.id, 
-  #   name: product.name, 
-  #   price: product.price, 
+  #   id: product.id,
+  #   name: product.name,
+  #   price: product.price,
   #   description: product.description,
   #   image_url: "",
 
-  #   Formatted: 
+  #   Formatted:
   #   {
 
-  #       is_discounted?: product.discounted?, 
+  #       is_discounted?: product.discounted?,
   # #       tax_of_product: product.tax.to_f,
   # #       total_with_tax: product.total.to_f
 
@@ -19,6 +20,5 @@
 
   # }
 
-  render partial: 'product.json.jb', locals: {product: product}
-
-end 
+  render partial: 'product.json.jb', locals: { product: product }
+end

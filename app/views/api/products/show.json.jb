@@ -1,1 +1,6 @@
-render partial: "product.json.jb", locals: {product: @product}
+# frozen_string_literal: true
+
+render partial: 'product.json.jb', locals:
+{
+  product: @product
+}

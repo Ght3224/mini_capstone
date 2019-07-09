@@ -1,1 +1,3 @@
-{message: @product.errors.full_messages}
+# frozen_string_literal: true
+
+{ message: @product.errors.full_messages }

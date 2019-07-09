@@ -3,36 +3,16 @@
 # top-level documentation!
 class Api::ProductsController < ApplicationController
   def index
-    # url = HTTP.get(https://code.org/schools.json)
-    # response = JSON.parse(url
-    # if params[:search]
-    #   @products = Product.where('name LIKE ?', '%{params[:search]}%')
-    # else 
-    #  @products = Product.all
-     # end 
-    #where('price < ?', '#{params[:search]}') #and Product.where()
-
-
-
+    @products = Product.all
     if params[:search]
-      @products = Product.where("name LIKE ?", "%#{params[:search]}%")
-
-    else
-      @products = Product.all
+      @products = Product.where(
+        'name LIKE ?', "%#{params[:search]}%"
+      )
     end
-
-
-    if params[:discount]
-      @products = @products.where('price < ?', 2)
-    end 
-
-    if params[:sort]
-      @products = @products.order(:price => :asc)
-    end 
+    @products = @products.where('price < ?', 2) if params[:discount]
+    @products = @products.order(price: 'asc') if params[:sort]
 
     @products = @products.order(params[:sort]) #=> params[:sort_order]
-
-
     render 'index.json.jb'
   end
 
@@ -40,39 +20,39 @@ class Api::ProductsController < ApplicationController
     product =  params[:id]
     @product = Product.find_by(id: product)
     render 'show.json.jb'
-  end 
+  end
 
-  # def drop 
-  #   @product = Product.first 
+  # def drop
+  #   @product = Product.first
   #   render "food_to_send.json.jb"
-  # end 
+  # end
 
-  # def store 
+  # def store
   #   @product = Product.last
   #   render "food_to_get_at_store.json.jb"
-  # end 
+  # end
 
-  def create 
+  def create
     @product = Product.new(
       name: params[:input_name],
       price: params[:input_price],
-      description: params[:input_description] )
+      description: params[:input_description]
+    )
     # @product.save
     if @product.save
       render 'show.json.jb'
     else
       render 'errors.json.jb', status: :unprocessable_entity
-    end 
+    end
   end
 
-
-  def update 
-
+  def update
     @product = Product.find_by(id: params[:id])
     if @product.update(
-    name: params[:input_name], price: params[:input_price],
-    description: params[:input_description] )
-     @product.save
+      name: params[:input_name], price: params[:input_price],
+      description: params[:input_description]
+    )
+      @product.save
       render 'show.json.jb'
     else
       render 'errors.json.jb', status: :unprocessable_entity
@@ -80,15 +60,8 @@ class Api::ProductsController < ApplicationController
   end
 
   def destroy
-
-
     @product = Product.find_by(id: params[:id])
-
-    @product.destroy 
-
+    @product.destroy
     render 'destroy.json.jb'
-  end 
-
-
-
-end 
+  end
+end

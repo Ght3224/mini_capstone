@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
+# This Product with record products
 class Product < ApplicationRecord
+  belongs_to :supplier
+  has_many :images
+
   validates :name, presence: true
   validates :name, uniqueness: true
   # validates :price, length: { in: 0.00..10_000_000.00 }
@@ -10,13 +14,12 @@ class Product < ApplicationRecord
   validates :description, length: { in: 10..500 }
   validates :image_url, length: { maximum: 254 }
 
+  # def supplier
+  #   Supplier.find_by(id: supplier_id)
+  # end
 
   def discounted?
-    if price.to_i < 10.to_i
-      true
-    else
-      false
-    end
+    price.to_i < 10.to_i
   end
 
   def tax
@@ -27,4 +30,3 @@ class Product < ApplicationRecord
     price.to_f + tax.to_f
   end
 end
-

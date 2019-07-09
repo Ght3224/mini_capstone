@@ -1,1 +1,3 @@
-{food: @product}
+# frozen_string_literal: true
+
+{ food: @product }
