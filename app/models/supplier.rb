@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+Image# frozen_string_literal: true
 
 # This supplier with supplier record
 class Supplier < ApplicationRecord

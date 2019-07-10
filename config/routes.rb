@@ -33,5 +33,9 @@ Rails.application.routes.draw do
     patch '/suppliers/:id' => 'suppliers#update'
 
     delete '/suppliers/:id' => 'suppliers#destroy'
+    # sign up 
+    post '/users' => 'users#create'
+    #generate token
+    post '/sessions' => 'sessions#create'
   end
 end
