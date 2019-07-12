@@ -1,0 +1,11 @@
+{
+  id: @orders.id,
+  user_id: @orders.user_id,
+  product_id: @orders.product_id,
+  quantity: @orders.quantity,
+  per_item_subtotal: @orders.subtotal,
+  per_item_tax: @orders.tax.to_f,
+  per_item_total: @orders.total
+  # tax: (@orders.product.price.to_f * 0.90),
+  # total: @orders.product.price.to_i + ((@orders.product.price.to_f * 0.90)/(100))
+}

@@ -37,5 +37,11 @@ Rails.application.routes.draw do
     post '/users' => 'users#create'
     #generate token
     post '/sessions' => 'sessions#create'
+    # get '/users' => 'orders#users'
+
+    post '/orders' => 'orders#create'
+
+    get '/orders' => 'orders#index'
+    get '/orders/:id' => 'orders#show'
   end
 end

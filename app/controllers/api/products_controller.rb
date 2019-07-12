@@ -17,6 +17,8 @@ class Api::ProductsController < ApplicationController
   end
 
   def show
+    p 'i am current user'
+    p current_user
     product =  params[:id]
     @product = Product.find_by(id: product)
     render 'show.json.jb'

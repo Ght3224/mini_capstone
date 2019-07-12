@@ -1,0 +1,11 @@
+@orders.each do |order| 
+  {   id: order.id,
+    user_id: order.user_id,
+  product_id: order.product_id,
+  quantity: order.quantity,
+  per_item_subtotal: order.product.price, 
+  per_item_tax: order.tax.to_f,
+  per_item_total: order.total.to_f
+    # total: 
+  }
+end
