@@ -2,6 +2,9 @@
 
 # top-level documentation!
 class Api::ProductsController < ApplicationController
+
+# before_action :authenticate_admin, except: [:create, :update]
+
   def index
     @products = Product.all
     if params[:search]
@@ -44,14 +47,16 @@ class Api::ProductsController < ApplicationController
     if @product.save
       render 'show.json.jb'
     else
-      render 'errors.json.jb', status: :unprocessable_entity
+      # render 'errors.json.jb', status: :unprocessable_entity
+      {}
     end
   end
 
   def update
     @product = Product.find_by(id: params[:id])
     if @product.update(
-      name: params[:input_name], price: params[:input_price],
+      name: params[:input_name], 
+      price: params[:input_price],
       description: params[:input_description]
     )
       @product.save

@@ -1,14 +1,14 @@
 class Api::OrdersController < ApplicationController
+  # before_action :authenticate_user
   def index 
-    @orders = Order.all
     p "i am the current user"
     p current_user
     if current_user
-      @orders = Order.all
+      @orders = current_user.orders
     else
-      puts 'no'
+      render json: {}, status: :unauthorized
     end
-    render 'index.json.jb'
+    # render 'index.json.jb'
   end
 
    def show
