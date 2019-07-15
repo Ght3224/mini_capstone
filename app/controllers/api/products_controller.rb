@@ -6,17 +6,30 @@ class Api::ProductsController < ApplicationController
 # before_action :authenticate_admin, except: [:create, :update]
 
   def index
-    @products = Product.all
-    if params[:search]
-      @products = Product.where(
-        'name LIKE ?', "%#{params[:search]}%"
-      )
-    end
-    @products = @products.where('price < ?', 2) if params[:discount]
-    @products = @products.order(price: 'asc') if params[:sort]
+    # @products = Product.all
+    # if params[:search]
+    #   @products = Product.where(
+    #     'name LIKE ?', "%#{params[:search]}%"
+    #   )
+    # end
+    # @products = @products.where('price < ?', 2) if params[:discount]
+    # @products = @products.order(price: 'asc') if params[:sort]
 
-    @products = @products.order(params[:sort]) #=> params[:sort_order]
+    # @products = @products.order(params[:sort]) #=> params[:sort_order]
+
+
+    @products = Product.all
+
+    if params[:category]
+      category = Category.find_by(name: params[:category])
+      @products = category.products
+    end 
+
     render 'index.json.jb'
+    # if params[:category]
+    #   category = Category.find_by(name: params[:category])
+    #   @products = category.products 
+    # end
   end
 
   def show
@@ -24,7 +37,7 @@ class Api::ProductsController < ApplicationController
     p current_user
     product =  params[:id]
     @product = Product.find_by(id: product)
-    render 'show.json.jb'
+    # render 'show.json.jb'
   end
 
   # def drop

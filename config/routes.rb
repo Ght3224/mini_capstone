@@ -43,5 +43,7 @@ Rails.application.routes.draw do
 
     get '/orders' => 'orders#index'
     get '/orders/:id' => 'orders#show'
+    patch '/orders/:id' => 'orders#update'
+    delete '/orders/:id' => 'orders#destroy'
   end
 end

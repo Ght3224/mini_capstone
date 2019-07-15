@@ -11,4 +11,5 @@
     total_with_tax: number_to_currency(product.total.to_f)
   },
   supplier_name: product.supplier,
+  categories: product.categories,
   stock: product.stock }
