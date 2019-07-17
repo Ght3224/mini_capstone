@@ -1,0 +1,12 @@
+@cartedproducts.each do |cartedproduct|
+
+  {
+    cartedproduct: cartedproduct.product_id,
+    quantity: cartedproduct.quantity,
+    order_id: cartedproduct.order_id,
+    status: cartedproduct.status,
+    user_id: cartedproduct.user_id
+  }
+
+end
+

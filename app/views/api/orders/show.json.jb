@@ -1,11 +1,13 @@
 {
   id: @order.id,
   user_id: @order.user_id,
-  product_id: @order.product_id,
-  quantity: @order.quantity,
+  # product_id: @order.product_id,
+  # quantity: @order.quantity,
   per_item_subtotal: @order.subtotal,
   per_item_tax: @order.tax.to_f,
-  per_item_total: @order.total
+  per_item_total: @order.total, 
+  message: "This item(s) have been ordered", 
+  ReceiptNo: @order.user_id.to_i + rand(300000)
   # tax: (@orders.product.price.to_f * 0.90),
   # total: @orders.product.price.to_i + ((@orders.product.price.to_f * 0.90)/(100))
 }
