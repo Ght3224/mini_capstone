@@ -1,0 +1,18 @@
+<form action= "/products" method = "post">
+  Name<input type = "text" name="name">
+  <!-- Price <input type = "text" name="price"> -->
+  <p>user: </p>
+  <select name="user_id">
+    <% @users.each do |user| %>
+    <option value="<%=user.id%>"><%=user.name%>
+    </option>
+    <% end %>
+  </select>
+
+
+  <!-- URL <input type = "text" name="url"> -->
+  DESCRIPTION<input type = "text" name="descrption">
+<input type="submit" value="Make a new product here">
+</form>
+
+

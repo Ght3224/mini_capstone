@@ -1,0 +1,22 @@
+
+
+<!-- <a href="/products">Go To Landing</a> -->
+
+
+
+<div><%=@product.name%></div>
+
+<div><%=@product.price%></div>
+<div><%=@product.description%></div>
+<div><%=@product.created_at%></div>
+
+
+<a href ="/products/<%=@product.id%>/edit">Edit</a>
+
+
+<!-- <form action="/products/<%=@product.id%>" method="post">
+  <input type = "hidden" name= "_method" value="delete">
+
+ -->
+
+<a href="/products/<%=@product.id%>" data-method="delete" rel="nofollow"> Delete this product</a>

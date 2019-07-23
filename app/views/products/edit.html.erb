@@ -1,0 +1,11 @@
+<form action="/products/<%=@product.id%>" method="post">
+
+
+
+<input type ='hidden' name= "_method" value="patch">
+  <p>Name<input type = "text" name="name" value="<%=@product.name%>"></p>
+  <p>Price<input type = "text" name="price" value="<%=@product.price%>"></p>
+  <p>Supplier<input type = "text" name="supplier" value="<%=@product.supplier%>"></p>
+  DESCRIPTION<input type = "text" name="descrption" placeholder="<%=@product.description%>">
+  <input type="submit" value="edit this product">
+</form>

@@ -6,7 +6,7 @@
   per_item_subtotal: @order.subtotal,
   per_item_tax: @order.tax.to_f,
   per_item_total: @order.total, 
-  message: "This item(s) have been ordered", 
+  message: "This item(s) have been purchased", 
   ReceiptNo: @order.user_id.to_i + rand(300000)
   # tax: (@orders.product.price.to_f * 0.90),
   # total: @orders.product.price.to_i + ((@orders.product.price.to_f * 0.90)/(100))

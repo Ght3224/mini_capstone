@@ -1,0 +1,13 @@
+
+<% @products.each do |product| %>
+<hr>
+<a href='/products/<%=product.id%>'>Show Page</a>
+
+<%= product.name %>
+<%= product.price %>
+<%end%>
+
+
+
+
+

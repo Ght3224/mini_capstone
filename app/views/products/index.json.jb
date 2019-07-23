@@ -1,0 +1,18 @@
+@products.each do |product|
+
+{ id: product.id,
+  name: product.name,
+  price: product.price,
+  description: product.description,
+  image: product.images,
+  Formatted: {
+    is_discounted?: product.discounted?,
+    tax_of_product: product.tax.to_f,
+    total_with_tax: number_to_currency(product.total.to_f)
+  },
+  supplier_name: product.supplier,
+  categories: product.categories,
+  stock: product.stock }
+
+
+end 
